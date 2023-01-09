@@ -5,7 +5,7 @@ import ShowData from './ShowData';
 
 function App() {
 
-  const numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '.' ];
+  const numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ];
 
   const [selectData, setSelectData] = useState([]);
 
@@ -100,6 +100,7 @@ function App() {
             {numberArray && numberArray.map((value, index) => index !==9? <button className='number_btn' key={index} onClick={getNum}  value={value} >{value}</button> :
             <button style={{gridColumn:'1/3',width:'90%' ,borderRadius:'100px'}} className='number_btn' key={index} onClick={getNum} value={value} >{value}</button>
             )}
+          <button className='number_btn' onClick={getMethod} value={'.'}>.</button>
           </div>
         </div>
         <div className='sign_btns'>
