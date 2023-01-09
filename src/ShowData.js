@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
-const ShowData = ({selectData}) => {
+const ShowData = ({preview}) => {
 
     return(
         <div className="show_data">
-        {selectData.length===0? 0 : selectData}
+        {preview.length===0? 0 : preview}
         </div>
     )
 }
