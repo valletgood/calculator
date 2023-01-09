@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Calculator = ({result}) => {
+
+    const convertResult = () => {
+        if(result !== undefined){
+        result = parseFloat(result)
+    }
+    }
+
+    convertResult();
 
     return (
         <div className="Calculator">

@@ -44,7 +44,7 @@ function App() {
 
   // !--- 값 계산
   const resultData = () => {
-    const calculator = eval(`${selectData}`)
+    const calculator = eval(`${selectData}`).toFixed(12)
     setResult(calculator)
     setSelectData([])
     setPreview([])
@@ -88,7 +88,7 @@ function App() {
   return (
     <div className="App">
       <ShowData preview={preview} />
-      <Calculator result={result} setResult={setResult} />
+      <Calculator result={result} />
       <div className='btns'>
         <div className='left_btns'>
           <div className='function_btns'>
