@@ -8,7 +8,7 @@ function App() {
 
   const [selectData, setSelectData] = useState([]);
 
-  const [checkingMethod, setCheckingMethod] = useState(true);
+  const [checkingMethod, setCheckingMethod] = useState(false);
 
   const [result, setResult] = useState();
 
@@ -27,7 +27,11 @@ function App() {
   const getMethod = (e) => {
     checkMethod();
     if (e.target.value === "=") {
-      resultData();
+      if (checkingMethod) {
+        resultData();
+      } else {
+        alert("올바른 수식이 아닙니다.");
+      }
     } else if (checkingMethod === true) {
       setSelectData((prev) => prev + e.target.value);
       setPreview((prev) => prev + e.target.innerText);
@@ -50,7 +54,7 @@ function App() {
 
   noZeroStart();
 
-  // !--- 직전 입력 문자 판별 true : 연산자 올 수 있음, false : 연산자 올 수 없음
+  // !--- 직전 입력 문자 판별 true : 연산자 올 수 있음(마지막 입력이 숫자), false : 연산자 올 수 없음(마지막 입력이 연산자)
   const checkMethod = () => {
     setCheckingMethod(false);
   };
@@ -73,11 +77,18 @@ function App() {
   };
 
   // !--- 마지막 입력 취소
-  const clearData = () => {
-    const data = selectData.slice(0, -1);
-    setSelectData(data);
-    setPreview(data);
-    setCheckingMethod(true);
+  const cancelData = () => {
+    let cancelSelectData = selectData.slice(0, -1);
+    let cancelPreview = preview.slice(0, -1);
+    if (cancelSelectData === "") {
+      setSelectData([]);
+      setPreview([]);
+      setCheckingMethod(false);
+    } else {
+      setSelectData(cancelSelectData);
+      setPreview(cancelPreview);
+      setCheckingMethod(true);
+    }
   };
 
   // !--- 부호 변환
@@ -92,10 +103,16 @@ function App() {
       setMark(true);
     }
   };
-  // !--- 렌더링이 직후 연산자를 첫번째로 선택할 수 없음
-  useEffect(() => {
-    setCheckingMethod(false);
-  }, []);
+
+  const lengthCheck = () => {
+    const targetLength = selectData.length;
+    if (targetLength >= 16) {
+      alert("입력 가능한 최대 길이입니다.");
+      resultData();
+    }
+  };
+
+  lengthCheck();
 
   return (
     <div className="App">
@@ -110,7 +127,7 @@ function App() {
               onClick={allClearData}>
               AC
             </button>
-            <button className="function_btn" value={"C"} onClick={clearData}>
+            <button className="function_btn" value={"C"} onClick={cancelData}>
               C
             </button>
             <button className="function_btn" value={"+/-"} onClick={toggleMark}>
