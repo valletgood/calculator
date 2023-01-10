@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "./App.css";
 import Calculator from "./Calculator";
 import ShowData from "./ShowData";
@@ -65,7 +65,6 @@ function App() {
     setResult(calculator);
     setSelectData([]);
     setPreview([]);
-    setMark(true);
   };
 
   // !--- 값 초기화
@@ -73,6 +72,7 @@ function App() {
     setSelectData([]);
     setPreview([]);
     setResult(0);
+    setCheckingMethod(false)
     setMark(true);
   };
 
@@ -90,8 +90,7 @@ function App() {
       setCheckingMethod(true);
     }
   };
-
-  // !--- 부호 변환
+  // !--- 부호 변환 true면 음수로, false면 양수로
   const toggleMark = () => {
     if (mark === true) {
       setSelectData((prev) => `-${prev}`);
@@ -104,6 +103,7 @@ function App() {
     }
   };
 
+  // !--- 입력 받은 데이터 길이 체크
   const lengthCheck = () => {
     const targetLength = selectData.length;
     if (targetLength >= 16) {
@@ -134,7 +134,7 @@ function App() {
               +/-
             </button>
           </div>
-          <div className="number_btns">
+          <div className="number_btns" >
             {numberArray &&
               numberArray.map((value, index) =>
                 index !== 9 ? (
