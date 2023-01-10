@@ -4,14 +4,14 @@ body {
 }
 
 .App {
-  width: 30%;
+  width: 350px;
   margin: auto;
   border: 1px solid darkgray;
   border-radius: 8px;
   padding: 50px;
 }
 
-.show_data{
+.show_data {
   text-align: right;
   font-size: 30px;
   padding-right: 10px;
@@ -27,7 +27,7 @@ body {
   padding-bottom: 30px;
 }
 
-.btns{
+.btns {
   display: flex;
   justify-content: center;
 }
@@ -53,27 +53,53 @@ body {
   font-size: 25px;
   font-weight: bold;
   color: white;
+  cursor: pointer;
+  text-align: center;
 }
 
-.sign_btns{
+.number_btn:hover {
+  background-color: #cacaca;
+  color: black;
+}
+
+.number_btn:active {
+  background-color: #7a7a7a;
+  color: white;
+}
+
+.sign_btns {
   display: flex;
   flex-direction: column;
 }
 
-.sign_btn{
+.sign_btn {
   width: 70px;
   height: 70px;
   margin: auto;
   border-radius: 50%;
   border: none;
-  background-color: orange;
+  background-color: #ff9500;
   margin: 10px;
   font-size: 25px;
   font-weight: bold;
   color: white;
+  cursor: pointer;
+  text-align: center;
 }
 
-.function_btns{
+.sign_btn:hover,
+.function_btn:hover {
+  background-color: #ffc573;
+  color: black;
+}
+
+.sign_btn:active,
+.function_btn:active {
+  background-color: #b36800;
+  color: white;
+}
+
+.function_btns {
   display: flex;
   justify-content: start;
 }
@@ -84,9 +110,34 @@ body {
   margin: auto;
   border-radius: 50%;
   border: none;
-  background-color: orange;
+  background-color: #ff9500;
   margin: 10px;
   font-size: 25px;
   font-weight: bold;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.history {
+  color: white;
+  text-align: right;
+  font-size: 25px;
+  font-weight: bold;
+  padding-right: 10px;
+  padding-bottom: 30px;
+}
+
+.history_btn {
+  border: none;
+  background-color: black;
+  color: white;
+  text-align: right;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.history h4 {
   color: white;
 }

@@ -1,20 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const Calculator = ({result}) => {
-
+const Calculator = ({ result }) => {
+  // !--- 소수점 정리
     const convertResult = () => {
-        if(result !== undefined){
-        result = parseFloat(result)
+    if (result !== undefined) {
+        result = parseFloat(result);
     }
-    }
+    };
 
     convertResult();
 
-    return (
-        <div className="Calculator">
-            {result === undefined ? 0 : result}
-        </div>
-    )
-}
+    return <div className="Calculator">{result === undefined ? 0 : result}</div>;
+};
 
 export default Calculator;
