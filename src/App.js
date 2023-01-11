@@ -54,11 +54,6 @@ function App() {
 
   noZeroStart();
 
-  // !--- 직전 입력 문자 판별 true : 연산자 올 수 있음(마지막 입력이 숫자), false : 연산자 올 수 없음(마지막 입력이 연산자)
-  const checkMethod = () => {
-    setCheckingMethod(false);
-  };
-
   // !--- 값 계산
   const resultData = () => {
     const calculator = eval(`${selectData}`).toFixed(12);
@@ -90,6 +85,7 @@ function App() {
       setCheckingMethod(true);
     }
   };
+  
   // !--- 부호 변환 true면 음수로, false면 양수로
   const toggleMark = () => {
     if (mark === true) {
@@ -114,6 +110,11 @@ function App() {
 
   lengthCheck();
 
+    // !--- 직전 입력 문자 판별 true : 연산자 올 수 있음(마지막 입력이 숫자), false : 연산자 올 수 없음(마지막 입력이 연산자)
+  const checkMethod = () => {
+    setCheckingMethod(false);
+  };
+  
   return (
     <div className="App">
       <ShowData preview={preview} />
